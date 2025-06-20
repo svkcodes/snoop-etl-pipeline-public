@@ -1,0 +1,22 @@
+# Ignore Python cache and logs
+__pycache__/
+*.pyc
+*.log
+
+# Ignore environment variables
+.env
+
+# Ignore local data and logs
+data/
+logs/
+*.csv
+
+# Ignore Docker-related files you don’t want to push
+*.db
+*.pid
+
+# Byte-compiled / optimized / DLL files
+*.so
+
+# macOS files
+.DS_Store
