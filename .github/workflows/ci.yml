@@ -11,19 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: 🐍 Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: 📦 Install dependencies
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
-      - name: 🐘 Start PostgreSQL container
+      - name: Start PostgreSQL container
         run: |
           docker run -d \
             --name pg_test \
@@ -36,7 +36,7 @@ jobs:
           echo "Waiting for Postgres to be ready..."
           until docker exec pg_test pg_isready -U ${{ secrets.POSTGRES_USER }}; do sleep 1; done
 
-      - name: ⚙️ Run ETL pipeline
+      - name: Run ETL pipeline
         env:
           DB_HOST: localhost
           DB_PORT: 5432

@@ -1,10 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 17 08:14:56 2025
+#Database configuration and loading data into the tables
 
-@author: swara
-"""
 # etl/load.py
 
 import json
@@ -12,12 +7,6 @@ import time
 import psycopg2
 import os
 import logging
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
 
 def get_connection(retries=5, delay=5):
     db_host = os.environ["DB_HOST"]

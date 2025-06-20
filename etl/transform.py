@@ -1,19 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 17 07:38:34 2025
+# Data Transformation
 
-@author: swara
-"""
+# etl/tranform.py
 
 import pandas as pd
 import logging
-
-# Configure logging (can be overridden by main app if already set there)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
 
 def clean_and_deduplicate(df):
     """

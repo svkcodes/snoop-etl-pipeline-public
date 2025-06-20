@@ -1,10 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 17 08:23:28 2025
+# Main Execution of the pipeline
 
-@author: swara
-"""
+# etl/run_pipeline.py
 
 import logging
 from etl.ingest import read_json_to_dataframe
@@ -19,14 +15,15 @@ logging.basicConfig(
 )
 
 def main():
-    logging.info("🚀 Starting ETL pipeline...")
+    logging.info(" Starting ETL pipeline...")
 
     # Step 1: Ingest
-    logging.info("📥 Step 1: Ingesting data")
+    logging.info(" Step 1: Ingesting data")
+    # Reading all JSON files from the /data directory
     df = read_json_to_dataframe("data")
 
     # Step 2: Validate
-    logging.info("🧪 Step 2: Validating data")
+    logging.info(" Step 2: Validating data")
     valid_df, invalid_df = validate_dataframe(df)
     logging.info(f" Valid records: {len(valid_df)}")
     logging.info(f" Invalid records: {len(invalid_df)}")
@@ -36,7 +33,7 @@ def main():
         logging.info(" Invalid records saved to logs/invalid_records.csv")
 
     # Step 3: Transform
-    logging.info("🔧 Step 3: Transforming data")
+    logging.info(" Step 3: Transforming data")
     cleaned_df = clean_and_deduplicate(valid_df)
     customers_df = get_customers_table(cleaned_df)
 
@@ -46,6 +43,7 @@ def main():
 
     # Step 4: Load
     logging.info(" Step 4: Loading into PostgreSQL")
+    # Insert valid records into DB and log invalid ones
     upsert_transactions(cleaned_df)
     upsert_customers(customers_df)
     insert_errors(invalid_df)

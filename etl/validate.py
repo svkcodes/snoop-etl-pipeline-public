@@ -1,17 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Data validation logic for transactions
-"""
+#Data validation logic for transactions
+
+# etl/validate.py
 
 import pandas as pd
 import logging
-
-# Configure logging if not set globally
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
 
 # Allowed currency codes (based on the Data Dictionary)
 ALLOWED_CURRENCIES = {"USD", "EUR", "GBP"}

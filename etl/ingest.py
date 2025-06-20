@@ -1,21 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 17 07:30:15 2025
-
-@author: swara
-"""
+# Data Ingestion 
 
 # etl/ingest.py
+
 import os
 import pandas as pd
 import logging
-
-# Configure logging (if not already configured in main script)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
 
 def read_json_to_dataframe(data_dir="data"):
     """
